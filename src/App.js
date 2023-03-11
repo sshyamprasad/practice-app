@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
 
+import InputForm from "./components/InputForm";
+import DisplayForm from "./components/DisplayForm";
+import { useState } from "react";
 function App() {
+  const [userIds, setUserIds] = useState([]);
+  const updateUser = (user) => {
+    setUserIds([...userIds, user]);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <InputForm updateUser={updateUser} />
+      <DisplayForm userIds={userIds} />
     </div>
   );
 }
